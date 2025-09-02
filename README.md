@@ -1,7 +1,7 @@
 Interchained Core integration/staging tree
 =====================================
 
-https://interchainedcore.org
+https://interchained.org
 
 What is Interchained?
 ----------------
@@ -13,8 +13,8 @@ out collectively by the network. Interchained Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately usable, binary version of
-the Interchained Core software, see https://interchainedcore.org/en/download/, or read the
-[original whitepaper](https://interchainedcore.org/interchained.pdf).
+the Interchained Core software, see https://interchained.org/en/download/, or read the
+[original whitepaper](https://interchained.org/interchained.pdf).
 
 License
 -------
