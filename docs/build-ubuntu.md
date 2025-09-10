@@ -42,7 +42,7 @@ make -j$(nproc)
 
 Get the node in sync now: 
 ```
-interchainedd -addnode=seed.interchained.org:17101
+./src/interchainedd -addnode=seed.interchained.org:17101
 ```
 
 Now you're ready to start interchained-cli! https://interchained.com/6/interchained-node-quickstart-interchainedd-interchained
