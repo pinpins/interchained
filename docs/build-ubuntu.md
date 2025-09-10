@@ -1,3 +1,6 @@
+# Recommended setup
+Ubuntu 22.04
+
 # Dependencies
 ```
 sudo apt update && sudo apt install -y software-properties-common
