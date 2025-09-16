@@ -826,9 +826,25 @@ static RPCHelpMan getblocktemplate()
         CBlockIndex* pindexPrevNew = ::ChainActive().Tip();
         nStart = GetTime();
 
-        // Create new block
-        CScript scriptDummy = CScript() << OP_TRUE;
-        pblocktemplate = BlockAssembler(mempool, Params()).CreateNewBlock(scriptDummy);
+        // Create new block with miner address from configuration
+        // Get the mining address from config file (miningaddress parameter)
+        std::string miningAddress = gArgs.GetArg("-miningaddress", "");
+        CScript scriptMinerAddress;
+        
+        if (!miningAddress.empty()) {
+            CTxDestination dest = DecodeDestination(miningAddress);
+            if (IsValidDestination(dest)) {
+                scriptMinerAddress = GetScriptForDestination(dest);
+            } else {
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid mining address in configuration: " + miningAddress);
+            }
+        } else {
+            // If no mining address is configured, use empty script as placeholder
+            // Miner must provide their own address in this case
+            scriptMinerAddress = CScript();
+        }
+        
+        pblocktemplate = BlockAssembler(mempool, Params()).CreateNewBlock(scriptMinerAddress);
         if (!pblocktemplate)
             throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");
 
